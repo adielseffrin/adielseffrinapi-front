@@ -1,0 +1,150 @@
+:root {
+    --primary-color: #4e4a4e;
+    --secondary-color: #6a665c;
+    --text-color: #442434;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+  }
+  
+  fieldset {
+    border: 5px dashed var(--text-color);
+    padding: 2rem;
+    background: var(--primary-color);
+    box-shadow: 10px 30px 24px -4px rgb(0 0 0 / 30%) inset;
+  } 
+  
+  legend {
+    color: #fff;
+    /* color: #a5a4a4; */
+  }
+  
+  .inventory__header {
+    margin: 1rem 0;
+  }
+  
+  .points {
+    font-size: 2rem;
+    position: relative;
+    float: right;
+  }
+  
+  .inventory__body {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    background: rgb(0 0 0 / 30%);
+    padding: 2rem;
+    justify-content: space-between;
+    border: 4px dashed var(--primary-color);;
+  }
+  
+  .inventory__summary {
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    margin-top: 1rem;
+    justify-content: space-evenly;
+  }
+  
+  .slot {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    background: var(--secondary-color);
+    color: #363436;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--text-color);
+    box-shadow: 5px 5px 5px -4px rgb(0 0 0 / 30%) inset;
+  }
+  
+  .quantity {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+    font-size: 1rem;
+    color: #fff;
+    text-shadow: -2px -2px 1px var(--text-color);
+  }
+  
+  .separator {
+    width: 100%;
+    height: 0.5rem;
+    background: #444044;
+    margin-bottom: 1rem;
+    border: 2px dashed var(--primary-color);
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 2px 2px 2px var(--text-color);
+  }
+  
+  .summary__item {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .summary__item > span {
+    font-size: 2rem;
+  }
+  
+  .inventory__body--ingredient {
+    align-items: center;
+  }
+  
+  .slot--ingredient {
+    width: 64px;
+    height: 64px;
+    margin: 0;
+  }
+  
+  .slot--ingredient > img {
+    width: 44px;
+  }
+  
+  
+  .text-border {
+    text-shadow: 2px 2px 0 var(--primary-color), 
+    2px -2px 0 var(--primary-color), 
+    -2px 2px 0 var(--primary-color),
+    -2px -2px 0 var(--primary-color),
+    2px 0px 0 var(--primary-color),
+    0px 2px 0 var(--primary-color),
+    -2px 0px 0 var(--primary-color),
+    0px -2px 0 var(--primary-color);
+  }
+  
+  .pizza {
+    width: 78px;
+    height: 78px;
+  }
+  
+  .pizza > img {
+    width: 64px;
+  }
