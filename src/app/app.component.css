@@ -11,6 +11,8 @@
     color: #fff;
     /* color: #a5a4a4; */
   }
+
+  .inventory { height: 100vh; display: flex; flex-direction: column; }
   
   .inventory__header {
     margin: 1rem 0;
@@ -22,15 +24,15 @@
     float: right;
   }
   
-  .inventory__body {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    background: rgb(0 0 0 / 30%);
-    padding: 2rem;
-    justify-content: space-between;
-    border: 4px dashed var(--primary-color);;
-  }
+  .inventory__body { 
+    display: grid; 
+    flex: 1; 
+    grid-gap: 2rem; 
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
+    grid-template-rows: repeat(auto-fill, minmax(110px, 1fr)); 
+    background: rgb(0 0 0 / 30%); 
+    padding: 2rem; 
+    border: 4px dashed var(--primary-color);; }
   
   .inventory__summary {
     display: flex;
@@ -40,19 +42,15 @@
     justify-content: space-evenly;
   }
   
-  .slot {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    margin-right: 1rem;
-    margin-bottom: 2rem;
-    background: var(--secondary-color);
-    color: #363436;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed var(--text-color);
-    box-shadow: 5px 5px 5px -4px rgb(0 0 0 / 30%) inset;
+  .slot { 
+    position: relative; 
+    background: var(--secondary-color); 
+    color: #363436; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border: 2px dashed var(--text-color); 
+    box-shadow: 5px 5px 5px -4px rgb(0 0 0 / 30%) inset; 
   }
   
   .quantity {

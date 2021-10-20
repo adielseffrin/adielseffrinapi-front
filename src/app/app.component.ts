@@ -10,6 +10,7 @@ export class AppComponent implements OnInit  {
   public title = 'pizza';
   public token: string = "";
   public userId: string = "";
+  public freeSlots = 21;
 
   public ingredientsArray : Array<any> = [];
   
@@ -37,12 +38,15 @@ export class AppComponent implements OnInit  {
       );
       return slot;
     }
+    this.twitchAuthorize.bind(this);
   }
 
   ngOnInit(){
     this.twitchContext();
-    this.twitcAuthorize();
+    this.twitchAuthorize();
     this.ingredientsArray = this.ingredientsPath(); 
+    this.freeSlots = this.freeSlots - this.ingredientsArray.length;
+   
   }
 
   private twitchContext(){
@@ -51,15 +55,18 @@ export class AppComponent implements OnInit  {
     });
   }
 
-  private twitcAuthorize(){
+  //debuga isso aqui mano
+  private twitchAuthorize(){
     this.twitch.onAuthorized((auth:any) => {
-      let token = auth.token;
-      let userId = auth.userId;
-      
+      console.log(this);
+      // let token = auth.token;
+      // let userId = auth.userId;
+    
       var parts=auth.token.split(".");
       var payload=JSON.parse(window.atob(parts[1]));
-      this.userId = payload.user_id;//trocar pelo nick
-        
+      //this.userId = payload.user_id;//trocar pelo nick
+      this.userId="teste 1";
+              
     });
   }
 

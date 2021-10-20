@@ -15,6 +15,9 @@
       <ng-container *ngFor="let ingredient of ingredientsArray">
         <div class="slot"><img src="{{ingredient.ingr}}"><span class="quantity">{{ingredient.qtde}}</span></div>
       </ng-container>
+      <ng-container *ngFor="let i of [].constructor(freeSlots)">
+        <div class="slot"></div>
+      </ng-container>
     </div>
     
     <div class="inventory__summary">
