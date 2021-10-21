@@ -1,23 +1,36 @@
-
-  
-  fieldset {
+  .inventory {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     border: 5px dashed var(--text-color);
-    padding: 2rem;
+    padding: 2rem 2rem 1rem;
     background: var(--primary-color);
     box-shadow: 10px 30px 24px -4px rgb(0 0 0 / 30%) inset;
   } 
   
   legend {
     color: #fff;
-    /* color: #a5a4a4; */
   }
 
   .inventory { height: 100vh; display: flex; flex-direction: column; }
   
   .inventory__header {
-    margin: 1rem 0;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    position: relative;
   }
-  
+ 
+  .inventory__header::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    border: 2px dashed var(--primary-color);
+    background: #444044;
+    left: 0;
+    right: 0;
+    height: 0.1rem;
+  }
+
   .points {
     font-size: 2rem;
     position: relative;
@@ -32,32 +45,64 @@
     grid-template-rows: repeat(auto-fill, minmax(110px, 1fr)); 
     background: rgb(0 0 0 / 30%); 
     padding: 2rem; 
-    border: 4px dashed var(--primary-color);; }
+    border: 4px dashed var(--primary-color);
+  }
   
   .inventory__summary {
     display: flex;
     flex-direction: column;
-    height: 5rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
     justify-content: space-evenly;
   }
   
-  .slot { 
-    position: relative; 
-    background: var(--secondary-color); 
-    color: #363436; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    border: 2px dashed var(--text-color); 
-    box-shadow: 5px 5px 5px -4px rgb(0 0 0 / 30%) inset; 
+  @keyframes border-dance {
+    0% {
+      background-position: left top, right bottom, left bottom, right   top;
+    }
+    100% {
+      background-position: left 15px top, right 15px bottom , left bottom 15px , right   top 15px;
+    }
   }
   
+  .slot {
+    --dash-height: 3px;
+    --dash-width: 15px;
+    --dash-left: var(--dash-width) var(--dash-height);
+    --dash-right: var(--dash-height) var(--dash-width);
+    --dash-gap: 30%;
+    position: relative;
+    background-color: var(--secondary-color);
+    color: #363436;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px -4px rgb(0 0 0 / 30%) inset;
+    background-image: 
+      linear-gradient(90deg, var(--text-color) calc(100% - var(--dash-gap)), transparent var(--dash-gap)), 
+      linear-gradient(90deg, var(--text-color) calc(100% - var(--dash-gap)), transparent var(--dash-gap)), 
+      linear-gradient(0deg, var(--text-color) calc(100% - var(--dash-gap)), transparent var(--dash-gap)), 
+      linear-gradient(0deg, var(--text-color) calc(100% - var(--dash-gap)), transparent var(--dash-gap));
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: var(--dash-left), var(--dash-left), var(--dash-right), var(--dash-right);
+    background-position: left top, right bottom, left bottom, right top;
+    transition: transform .1s linear;
+    animation: border-dance .25s 0 linear;
+  }
+
+  .slot:not(.disabled) {
+    cursor: pointer;
+  }
+  
+  .slot:not(.disabled):hover {
+    transform: scale(1.05);
+    animation-iteration-count: infinite;
+  }
+
   .quantity {
     position: absolute;
     display: block;
-    bottom: 0;
-    right: 0;
+    bottom: .5rem;
+    right: .5rem;
     font-size: 1rem;
     color: #fff;
     text-shadow: -2px -2px 1px var(--text-color);
