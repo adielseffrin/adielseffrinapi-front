@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -13,11 +13,11 @@ export class AppComponent implements OnInit  {
   public freeSlots = 21;
 
   public ingredientsArray : Array<any> = [];
-  
+
   private twitch = window.Twitch.ext;
   private ingredientsPath: any;
 
-  constructor(){
+  constructor(private ref: ChangeDetectorRef){
     this.ingredientsPath = () => {
       const pathToIngredientImage = "assets/img/{ingredient}.png";
       const ingredients = [
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit  {
         "pizza-fatia",
         "pizza",
       ];
-    
+
       const slot = ingredients.map((item) =>
         ({ingr: pathToIngredientImage.replace("{ingredient}", item), qtde: 3})
       );
@@ -44,9 +44,9 @@ export class AppComponent implements OnInit  {
   ngOnInit(){
     this.twitchContext();
     this.twitchAuthorize();
-    this.ingredientsArray = this.ingredientsPath(); 
+    this.ingredientsArray = this.ingredientsPath();
     this.freeSlots = this.freeSlots - this.ingredientsArray.length;
-   
+
   }
 
   private twitchContext(){
@@ -61,14 +61,14 @@ export class AppComponent implements OnInit  {
       console.log(this);
       // let token = auth.token;
       // let userId = auth.userId;
-    
+
       var parts=auth.token.split(".");
       var payload=JSON.parse(window.atob(parts[1]));
       //this.userId = payload.user_id;//trocar pelo nick
       this.userId="teste 1";
-              
+      this.ref.detectChanges()
     });
   }
 
-  
+
 }
