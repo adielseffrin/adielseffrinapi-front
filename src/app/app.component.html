@@ -4,8 +4,8 @@
     
     <div class="inventory__header">
       <h3>
-        @<span id="userIdentification">{{userId}}</span> 
-        <span class="points">Ranking 15º</span>
+        @<span id="userIdentification">{{userName}}</span> 
+        <span class="points">Ranking ?º</span>
       </h3>
     </div>
 
@@ -21,12 +21,12 @@
     <div class="inventory__summary">
       <h5 class="summary__item">
         Total Items:
-        <span>8</span>
+        <span>{{ingredientsArray.length}}</span>
       </h5>
 
       <h5 class="summary__item">
         Total Points:
-        <span>123453</span>
+        <span>-</span>
       </h5>
     </div>
   </fieldset>
