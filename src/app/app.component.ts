@@ -75,15 +75,17 @@ export class AppComponent implements OnInit  {
       var payload=JSON.parse(window.atob(parts[1]));
       this.userId = payload.user_id;//trocar pelo nick
       this.ref.detectChanges()
+      console.log(token);
       this.makeGetRequest(this.userId, token);
       
     });
   }
 
-  private urlteste = "http://localhost:8000/pizza/info/";
+  private urlteste = "https://api.adielseffr.in/pizza/info";
+  //private urlteste = "http://localhost:8000/pizza/info/";
   private makeGetRequest(id:string, token : string){
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      JWT: token
+      Jwt: token
     });
     this.http.get<InfoRequest>(this.urlteste, {headers : httpHeaders})
     .subscribe(
